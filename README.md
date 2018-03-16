@@ -1,5 +1,5 @@
 # Hornslien
-Hornslien et al MS 2018 
+Hornslien et al. MS 2018 
 
 Regulation of Parent-of-Origin Allelic Expression in Arabidopsis thaliana endosperm
 
