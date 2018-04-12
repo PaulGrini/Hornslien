@@ -1,3 +1,48 @@
+Process 
+=============
+
+Experiment:
+
+Twelve genes were selected to include MEG, PEG, and BEG examples.
+For each gene, SNPs were discovered by comparing the pilon P4 consensus sequences.
+SNPs were discovered using nucmer and show-snps from the MUMmer package.
+For each SNP, the 21bp region was extracted in forward and reverse complement.
+These results are in the parsed_SNPs.txt file
+
+The make_script.sh script parsed the SNPs and generated the count_SNPs.sh script.
+The following counts were generated with the count_SNPs.sh script on Abel.
+Using each 21bp sequence, reads were searched with grep to count exact match.
+The search was performed with Abel on UiO sequence files representing Cross.Replicate.Read.
+Nearly all matches involved our 21bp reverse sequence to R2 or our 21bp forward sequence to R1.
+These coverage counts are in the Col_x_Ler.csv (and Ler_x_Col) files.
+In these files, Col comes before Ler.
+
+The from_SNP_to_read_counts.sh script invokes the from_SNP_to_read_counts.pl script.
+This script converted the csv files to the three_reps_per_gene format used for Informative Reads.
+The results are in the Col_x_Ler.three_reps_per_gene (and Ler_x_Col) files.
+In these files, maternal comes before paternal.
+These outputs are designed for comparison to outputs of collate_three_reps_per_gene.sh for IR.
+
+For Informative Reads, it was necessary to run the apply_filter_to_counts.sh script.
+That generated the three_reps_per_gene.filtered files with fewer than 1011 genes per cross.
+For this experiment, it is not necessary to filter the genes. We have 12 genes, period.
+
+The next step was to run the run_differential_expression.sh script.
+This is a wrapper to send each cross through the limma statistics.
+We will run the limma R script directly: limma.foldchange.r in core.
+This script says it expects "gene Col Col Col other other other"
+but actually it was always run with "gene Mat Mat Mat Pat Pat Pat".
+The output is in *.de sorted by most to least significant.
+
+Rscript limma.foldchange.r Col_x_Ler.three_reps_per_gene
+Rscript limma.foldchange.r Ler_x_Col.three_reps_per_gene
+
+For a fair comparison, extract Informative Read counts for the same 12 genes.
+
+
+Files
+=============
+
 parsed_SNPs.txt 
 --------------------
 
