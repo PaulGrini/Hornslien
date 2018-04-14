@@ -37,7 +37,30 @@ The output is in *.de sorted by most to least significant.
 Rscript limma.foldchange.r Col_x_Ler.three_reps_per_gene
 Rscript limma.foldchange.r Ler_x_Col.three_reps_per_gene
 
+Then, do what run_differential_expression.sh does...
+
+foreach X (*.de)
+foreach? cat $X | tr -d '"' | sort -t"," -k1,1n | awk '{if (C++ >= 1) print $0;}' > $X.sorted
+foreach? end
+
+Then, do what finalize_csv.csh does...
+
+foreach X (*.three_reps_per_gene)
+foreach? echo $X
+foreach? cat $X | tr ' ' ',' > $X.csv
+foreach? paste $X.csv $X.de.sorted | tr '\t' ',' > $X.final.csv
+foreach? end
+
 For a fair comparison, extract Informative Read counts for the same 12 genes.
+
+cat Col_x_Ler.three_reps_per_gene.filtered.final.csv | grep -E 'AT1G55560|AT1G65300|AT2G17690|AT2G32990|AT2G35670|AT3G19350|AT4G10640|AT4G13460|AT4G25530|AT5G26630|AT5G2665|AT5G60440' > twelve_genes.Col_x_Ler.three_reps_per_gene.filtered.final.csv
+
+cat Ler_x_Col.three_reps_per_gene.filtered.final.csv | grep -E 'AT1G55560|AT1G65300|AT2G17690|AT2G32990|AT2G35670|AT3G19350|AT4G10640|AT4G13460|AT4G25530|AT5G26630|AT5G2665|AT5G60440' > twelve_genes.Ler_x_Col.three_reps_per_gene.filtered.final.csv
+
+cat twelve_genes.Col_x_Ler.three_reps_per_gene.filtered.final.csv | tr ',' ' ' | awk '{print $1,$2,$3,$4,$5,$6,$7;}' > Col_x_Ler.three_reps_per_gene
+
+cat twelve_genes.Ler_x_Col.three_reps_per_gene.filtered.final.csv | tr ',' ' ' | awk '{print $1,$2,$3,$4,$5,$6,$7;}' > Ler_x_Col.three_reps_per_gene
+
 
 
 Files
@@ -99,3 +122,21 @@ Sample data:
 
 AT1G55560 361 142 230 436 357 605
 AT1G65300 3001 2637 2736 1301 1214 1289
+
+Comparison
+==========
+
+For 12 genes, run max-min-SNP-count through limma as well is IR counts for same genes.
+
+Generate i.e. Col_x_Ler.three_reps_per_gene.filtered.final.csv for 12 genes using max min SNP count.
+
+Generate IR csv files i.e. twelve_genes.Col_x_Ler.three_reps_per_gene.filtered.final.csv
+
+Compare in Excel. CORREL(FC) is 0.77 (but the stats do not correlate).
+
+In Excel, the one outlier by FC is AT2G35670. 
+Interestingly, this gene has 3 alignments to self.
+Also, the SNP count at one SNP gives counts almost as high as the IR count.
+
+
+
