@@ -14,54 +14,33 @@ The following counts were generated with the count_SNPs.sh script on Abel.
 Using each 21bp sequence, reads were searched with grep to count exact match.
 The search was performed with Abel on UiO sequence files representing Cross.Replicate.Read.
 Nearly all matches involved our 21bp reverse sequence to R2 or our 21bp forward sequence to R1.
-These coverage counts are in the Col_x_Ler.csv (and Ler_x_Col) files.
+These coverage counts are in the SNP.Col_x_Ler.csv (and SNP.Ler_x_Col) files.
 In these files, Col comes before Ler.
 
 The from_SNP_to_read_counts.sh script invokes the from_SNP_to_read_counts.pl script.
 This script converted the csv files to the three_reps_per_gene format used for Informative Reads.
-The results are in the Col_x_Ler.three_reps_per_gene (and Ler_x_Col) files.
+The results are in the SNP.Col_x_Ler.three_reps_per_gene (and SNP.Ler_x_Col) files.
+In these files, maternal values have been cut in half.
 In these files, maternal comes before paternal.
 These outputs are designed for comparison to outputs of collate_three_reps_per_gene.sh for IR.
+The from_SNP_to_read_counts.log file has the log for how each gene was computed.
 
 For Informative Reads, it was necessary to run the apply_filter_to_counts.sh script.
 That generated the three_reps_per_gene.filtered files with fewer than 1011 genes per cross.
 For this experiment, it is not necessary to filter the genes. We have 12 genes, period.
 
-The next step was to run the run_differential_expression.sh script.
-This is a wrapper to send each cross through the limma statistics.
-We will run the limma R script directly: limma.foldchange.r in core.
-This script says it expects "gene Col Col Col other other other"
+Next, we ran the comparative_12gene_counts.sh script.
+This implemented the run_differential_expression.sh script that was applied to informative reads.
+This also implemented the finalize_csv.csh script that was applied to informative reads.
+The run_* script was a wrapper to send each cross through the limma statistics.
+Our comparative script runs the limma R script, limma.foldchange.r, from the core directory.
+The R script says it expects "gene Col Col Col other other other"
 but actually it was always run with "gene Mat Mat Mat Pat Pat Pat".
-The output is in *.de sorted by most to least significant.
-
-Rscript limma.foldchange.r Col_x_Ler.three_reps_per_gene
-Rscript limma.foldchange.r Ler_x_Col.three_reps_per_gene
-
-Then, do what run_differential_expression.sh does...
-
-foreach X (*.de)
-foreach? cat $X | tr -d '"' | sort -t"," -k1,1n | awk '{if (C++ >= 1) print $0;}' > $X.sorted
-foreach? end
-
-Then, do what finalize_csv.csh does...
-
-foreach X (*.three_reps_per_gene)
-foreach? echo $X
-foreach? cat $X | tr ' ' ',' > $X.csv
-foreach? paste $X.csv $X.de.sorted | tr '\t' ',' > $X.final.csv
-foreach? end
-
-For a fair comparison, extract Informative Read counts for the same 12 genes.
-
-cat Col_x_Ler.three_reps_per_gene.filtered.final.csv | grep -E 'AT1G55560|AT1G65300|AT2G17690|AT2G32990|AT2G35670|AT3G19350|AT4G10640|AT4G13460|AT4G25530|AT5G26630|AT5G2665|AT5G60440' > twelve_genes.Col_x_Ler.three_reps_per_gene.filtered.final.csv
-
-cat Ler_x_Col.three_reps_per_gene.filtered.final.csv | grep -E 'AT1G55560|AT1G65300|AT2G17690|AT2G32990|AT2G35670|AT3G19350|AT4G10640|AT4G13460|AT4G25530|AT5G26630|AT5G2665|AT5G60440' > twelve_genes.Ler_x_Col.three_reps_per_gene.filtered.final.csv
-
-cat twelve_genes.Col_x_Ler.three_reps_per_gene.filtered.final.csv | tr ',' ' ' | awk '{print $1,$2,$3,$4,$5,$6,$7;}' > Col_x_Ler.three_reps_per_gene
-
-cat twelve_genes.Ler_x_Col.three_reps_per_gene.filtered.final.csv | tr ',' ' ' | awk '{print $1,$2,$3,$4,$5,$6,$7;}' > Ler_x_Col.three_reps_per_gene
-
-
+The comparative script runs the R script on the Informative Reads and SNP data.
+The Informative Reads data is in IR.Col_x_Ler.three_reps_per_gene (and Ler_x_Col).
+These files correspond to the first 7 columns of Col_x_Ler.three_reps_per_gene.filtered.final.csv (and Ler_x_Col)
+from the project1/results1/Statistics directory.
+The output files *.de are sorted by most to least significant.
 
 Files
 =============

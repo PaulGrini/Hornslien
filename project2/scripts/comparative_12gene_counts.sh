@@ -22,7 +22,14 @@
 date
 pwd
 
-SCRIPTDIR=/Users/jasonmiller/Source/CountSNP/Hornslien/core
+if [[ -z "${SCRIPTDIR}" ]]; then
+    echo "Please set the SCRIPTDIR environment variable to the home of limma.foldchange.r"
+    exit 1
+else
+    export SCRIPTDIR="${SCRIPTDIR}"
+    echo SCRIPTDIR ${SCRIPTDIR}
+    ls -l ${SCRIPTDIR}/limma.foldchange.r
+fi
 
 Rscript ${SCRIPTDIR}/limma.foldchange.r SNP.Col_x_Ler.three_reps_per_gene
 Rscript ${SCRIPTDIR}/limma.foldchange.r SNP.Ler_x_Col.three_reps_per_gene
