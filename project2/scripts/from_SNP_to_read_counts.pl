@@ -86,8 +86,7 @@ sub all_genes () {
 }
 
 # For one gene, parse every line, and retain the one line with largest numbers.
-# Define largest as having the largest minimum (min_max).
-# In case of a tie for min, define largest as having the largest maximum (max_max).
+# Define largest line as line whose max value is the max value over all genes.
 # Example returned strings:
 # AT1G55560.SNP1395,20,10,14,354,154,204,368,129,256,10,10,14,33,17,60,403,340,545,417,495,485,47,19,58
 # AT1G65300.SNP2053,7,0,16,3021,2569,2776,2980,2704,2696,7,0,16,2,1,0,1299,1213,1289,1297,1193,1454,2,0,0
@@ -97,35 +96,28 @@ sub one_gene () {
     my ($line);
     my (@array);
     my (@FIELDS);
-    my ($min_this_line,$max_this_line);
-    my ($max_min,$max_max);
-    my ($line_with_max_min);
+    my ($max_this_line);
+    my ($max_this_gene);
+    my ($line_with_max);
     my ($ii,$jj);
-    $max_min= -1;
-    $max_max= -1;
+    $max_this_gene= -1;
     for ($ii=0; $ii<$elements; $ii++) {
 	$line = @{$ALL_DATA{$gene}}[$ii];
 	@FIELDS = split (',', $line);
-	$min_this_line = $INFINITY;
-	$max_this_line = 0;
+	$max_this_line = -1;
 	for ($jj=1; $jj<=24; $jj++) {
-	    # Go for the one line with the largest min value among 6 counts we care about.
 	    if ($jj>=4 && $jj<=9 || $jj>=16 && $jj<=21) {
-		if ($FIELDS[$jj]<$min_this_line) {
-		    $min_this_line=$FIELDS[$jj];
-		}
 		if ($FIELDS[$jj]>$max_this_line) {
 		    $max_this_line=$FIELDS[$jj];
 		}
 	    }
 	}
-	if ($min_this_line>$max_min || $min_this_line==$max_min && $max_this_line>$max_max) {
-	    $max_min=$min_this_line;
-	    $max_max=$max_this_line;
-	    $line_with_max_min=$line;
+	if ($max_this_line>$max_this_gene) {
+	    $max_this_gene=$max_this_line;
+	    $line_with_max=$line;
 	}
     }
-    return $line_with_max_min;
+    return $line_with_max;
 }
 
 # Input files like this:
