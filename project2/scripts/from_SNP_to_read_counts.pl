@@ -25,7 +25,6 @@ my ($DATA_FILE) = $ARGV[1];
 print STDERR "Maternal = $MATERNAL\n";
 print STDERR "Input File = $DATA_FILE\n";
 
-
 # CONSTANTS
 my ($INFINITY)=1000000;
 
@@ -65,19 +64,23 @@ sub all_genes () {
 	if ($MATERNAL eq "Col") {
 	    $m1=4;  # first of 3 reps for Col R1 rev
 	    $m2=7;  # first of 3 reps for Col R2 fwd
-	    $p1=13;   # first of 3 reps for Ler R1 rev 
-	    $p2=16;   # first of 3 reps for Ler R2 fwd
+	    $p1=16;   # first of 3 reps for Ler R1 rev 
+	    $p2=19;   # first of 3 reps for Ler R2 fwd
 	} else {
-	    $m1=13;   # first of 3 reps for Ler R1 rev 
-	    $m2=16;   # first of 3 reps for Ler R2 fwd
+	    $m1=16;   # first of 3 reps for Ler R1 rev 
+	    $m2=19;   # first of 3 reps for Ler R2 fwd
 	    $p1=4;  # first of 3 reps for Col R1 rev
 	    $p2=7;  # first of 3 reps for Col R2 fwd
 	}
+	print STDERR " Gene $gene was represented by this SNP count line: $line\n";
+	print STDERR " Compute Mat BR1 from ($FIELDS[$m1] + $FIELDS[$m2]) / 2 \n";
+	print STDERR " Compute Pat BR1 from ($FIELDS[$p1] + $FIELDS[$p2]) \n";
 	for ($i=1; $i<=3; $i++) {
 	    $MatBR[$i] = $FIELDS[$m1++] + $FIELDS[$m2++];
 	    $MatBR[$i] = int (0.5+$MatBR[$i]/2.0); # cut maternal in half, then round to integer
 	    $PatBR[$i] = $FIELDS[$p1++] + $FIELDS[$p2++];      
 	}
+	print STDERR "Output $gene $MatBR[1] $MatBR[2] $MatBR[3] $PatBR[1] $PatBR[2] $PatBR[3]\n";
 	print STDOUT "$gene $MatBR[1] $MatBR[2] $MatBR[3] $PatBR[1] $PatBR[2] $PatBR[3]\n";
     }
 }

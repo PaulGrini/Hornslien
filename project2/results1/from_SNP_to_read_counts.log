@@ -1,0 +1,113 @@
+Convert files with 24 read counts per SNP
+ to files with 6 read counts per gene.
+Col_x_Ler
+Maternal = Col
+Input File = SNP.Col_x_Ler.csv
+Reading...
+Input lines: 110
+Input genes: 12
+ Gene AT1G55560 was represented by this SNP count line: AT1G55560.SNP1395,20,10,14,354,154,204,368,129,256,10,10,14,33,17,60,403,340,545,417,495,485,47,19,58
+ Compute Mat BR1 from (354 + 368) / 2 
+ Compute Pat BR1 from (403 + 417) 
+Output AT1G55560 361 142 230 820 835 1030
+ Gene AT1G65300 was represented by this SNP count line: AT1G65300.SNP2053,7,0,16,3021,2569,2776,2980,2704,2696,7,0,16,2,1,0,1299,1213,1289,1297,1193,1454,2,0,0
+ Compute Mat BR1 from (3021 + 2980) / 2 
+ Compute Pat BR1 from (1299 + 1297) 
+Output AT1G65300 3001 2637 2736 2596 2406 2743
+ Gene AT2G17690 was represented by this SNP count line: AT2G17690.SNP3070,144,165,282,7105,6797,8371,7829,7801,9424,137,179,229,5,12,8,24,19,43,23,20,42,6,4,6
+ Compute Mat BR1 from (7105 + 7829) / 2 
+ Compute Pat BR1 from (24 + 23) 
+Output AT2G17690 7467 7299 8898 47 39 85
+ Gene AT2G32990 was represented by this SNP count line: AT2G32990.SNP3514,0,0,0,622,315,294,453,250,209,0,4,0,0,0,0,2,1,1,2,1,1,0,0,0
+ Compute Mat BR1 from (622 + 453) / 2 
+ Compute Pat BR1 from (2 + 2) 
+Output AT2G32990 538 283 252 4 2 2
+ Gene AT2G35670 was represented by this SNP count line: AT2G35670.SNP3615,0,0,0,362,405,398,320,372,366,0,0,0,0,0,0,366,405,410,325,372,373,0,0,0
+ Compute Mat BR1 from (362 + 320) / 2 
+ Compute Pat BR1 from (366 + 325) 
+Output AT2G35670 341 389 382 691 777 783
+ Gene AT3G19350 was represented by this SNP count line: AT3G19350.SNP4226,1,10,0,9258,7465,8182,11518,9424,10710,1,11,3,9,0,0,564,489,489,635,605,679,9,8,0
+ Compute Mat BR1 from (9258 + 11518) / 2 
+ Compute Pat BR1 from (564 + 635) 
+Output AT3G19350 10388 8445 9446 1199 1094 1168
+ Gene AT4G10640 was represented by this SNP count line: AT4G10640.SNP5708,13,34,56,2273,1941,2196,2187,1842,2423,8,32,11,0,0,0,70,83,60,52,60,64,0,0,0
+ Compute Mat BR1 from (2273 + 2187) / 2 
+ Compute Pat BR1 from (70 + 52) 
+Output AT4G10640 2230 1892 2310 122 143 124
+ Gene AT4G13460 was represented by this SNP count line: AT4G13460.SNP5855,11,0,4,9390,7822,8383,8825,8132,8205,15,0,4,0,1,0,654,544,718,544,553,666,0,1,0
+ Compute Mat BR1 from (9390 + 8825) / 2 
+ Compute Pat BR1 from (654 + 544) 
+Output AT4G13460 9108 7977 8294 1198 1097 1384
+ Gene AT4G25530 was represented by this SNP count line: AT4G25530.SNP6381,2,3,0,4629,3598,4863,4687,3749,4768,2,3,0,0,0,0,24,14,20,30,11,28,0,0,0
+ Compute Mat BR1 from (4629 + 4687) / 2 
+ Compute Pat BR1 from (24 + 30) 
+Output AT4G25530 4658 3674 4816 54 25 48
+ Gene AT5G26630 was represented by this SNP count line: AT5G26630.SNP7406,0,0,18,1262,855,1015,1364,1105,1081,0,0,18,0,3,0,608,647,627,739,815,680,0,3,0
+ Compute Mat BR1 from (1262 + 1364) / 2 
+ Compute Pat BR1 from (608 + 739) 
+Output AT5G26630 1313 980 1048 1347 1462 1307
+ Gene AT5G26650 was represented by this SNP count line: AT5G26650.SNP7410,0,0,0,384,353,303,599,874,538,0,0,0,0,0,0,2,1,1,2,1,3,0,0,0
+ Compute Mat BR1 from (384 + 599) / 2 
+ Compute Pat BR1 from (2 + 2) 
+Output AT5G26650 492 614 421 4 2 4
+ Gene AT5G60440 was represented by this SNP count line: AT5G60440.SNP8667,0,7,0,2276,2235,2259,1960,1974,1760,0,5,0,0,0,0,805,1121,833,577,897,818,1,0,0
+ Compute Mat BR1 from (2276 + 1960) / 2 
+ Compute Pat BR1 from (805 + 577) 
+Output AT5G60440 2118 2105 2010 1382 2018 1651
+Done.
+Ler_x_Col
+Maternal = Ler
+Input File = SNP.Ler_x_Col.csv
+Reading...
+Input lines: 110
+Input genes: 12
+ Gene AT1G55560 was represented by this SNP count line: AT1G55560.SNP1398,35,1,14,671,527,749,654,511,776,25,1,14,78,67,85,206,43,34,190,48,47,65,31,24
+ Compute Mat BR1 from (206 + 190) / 2 
+ Compute Pat BR1 from (671 + 654) 
+Output AT1G55560 198 46 41 1325 1038 1525
+ Gene AT1G65300 was represented by this SNP count line: AT1G65300.SNP2053,1,1,0,2255,1654,1224,2217,1599,1328,1,1,0,0,15,0,3895,2455,2738,3611,2964,2605,4,14,0
+ Compute Mat BR1 from (3895 + 3611) / 2 
+ Compute Pat BR1 from (2255 + 2217) 
+Output AT1G65300 3753 2710 2672 4472 3253 2552
+ Gene AT2G17690 was represented by this SNP count line: AT2G17690.SNP3070,2,0,0,32,9,9,35,11,11,2,15,0,194,149,169,2322,1809,1434,2178,1741,1503,183,150,231
+ Compute Mat BR1 from (2322 + 2178) / 2 
+ Compute Pat BR1 from (32 + 35) 
+Output AT2G17690 2250 1775 1469 67 20 20
+ Gene AT2G32990 was represented by this SNP count line: AT2G32990.SNP3516,0,0,0,5,0,0,1,0,0,0,0,0,22,0,0,2251,1039,682,1651,787,600,4,0,0
+ Compute Mat BR1 from (2251 + 1651) / 2 
+ Compute Pat BR1 from (5 + 1) 
+Output AT2G32990 1951 913 641 6 0 0
+ Gene AT2G35670 was represented by this SNP count line: AT2G35670.SNP3614,0,0,0,316,208,333,266,206,254,0,0,1,0,0,0,325,217,345,269,215,256,0,0,1
+ Compute Mat BR1 from (325 + 269) / 2 
+ Compute Pat BR1 from (316 + 266) 
+Output AT2G35670 297 216 301 582 414 587
+ Gene AT3G19350 was represented by this SNP count line: AT3G19350.SNP4226,0,0,0,384,329,483,634,360,606,5,0,0,4,0,2,5626,4680,4082,6413,5163,5047,4,0,2
+ Compute Mat BR1 from (5626 + 6413) / 2 
+ Compute Pat BR1 from (384 + 634) 
+Output AT3G19350 6020 4922 4565 1018 689 1089
+ Gene AT4G10640 was represented by this SNP count line: AT4G10640.SNP5713,0,0,5,46,39,93,64,31,39,0,0,5,20,12,28,2217,1561,1550,2657,2213,2210,20,11,27
+ Compute Mat BR1 from (2217 + 2657) / 2 
+ Compute Pat BR1 from (46 + 64) 
+Output AT4G10640 2437 1887 1880 110 70 132
+ Gene AT4G13460 was represented by this SNP count line: AT4G13460.SNP5856,0,0,0,900,644,734,1045,865,810,0,0,0,2,7,18,6824,5106,4833,7071,6138,5219,2,7,18
+ Compute Mat BR1 from (6824 + 7071) / 2 
+ Compute Pat BR1 from (900 + 1045) 
+Output AT4G13460 6948 5622 5026 1945 1509 1544
+ Gene AT4G25530 was represented by this SNP count line: AT4G25530.SNP6380,0,0,0,23,22,5,27,32,6,0,0,0,1,6,16,5111,3961,4150,5160,4136,4240,1,6,17
+ Compute Mat BR1 from (5111 + 5160) / 2 
+ Compute Pat BR1 from (23 + 27) 
+Output AT4G25530 5136 4049 4195 50 54 11
+ Gene AT5G26630 was represented by this SNP count line: AT5G26630.SNP7406,0,0,0,781,654,802,836,713,875,2,0,0,3,0,0,1383,1238,1339,1521,1371,1410,3,0,0
+ Compute Mat BR1 from (1383 + 1521) / 2 
+ Compute Pat BR1 from (781 + 836) 
+Output AT5G26630 1452 1305 1375 1617 1367 1677
+ Gene AT5G26650 was represented by this SNP count line: AT5G26650.SNP7409,0,0,0,22,65,43,13,73,7,0,0,0,0,0,0,3085,3979,3540,1984,2378,2093,0,0,0
+ Compute Mat BR1 from (3085 + 1984) / 2 
+ Compute Pat BR1 from (22 + 13) 
+Output AT5G26650 2535 3179 2817 35 138 50
+ Gene AT5G60440 was represented by this SNP count line: AT5G60440.SNP8665,0,0,8,1188,1019,992,1048,802,773,0,0,8,1,0,0,1573,1681,1471,1238,1290,1240,1,0,0
+ Compute Mat BR1 from (1573 + 1238) / 2 
+ Compute Pat BR1 from (1188 + 1048) 
+Output AT5G60440 1406 1486 1356 2236 1821 1765
+Done.
+Thu Apr 19 14:27:41 EDT 2018
