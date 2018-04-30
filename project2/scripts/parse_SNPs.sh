@@ -9,6 +9,12 @@
 # AT2G17690 COL AT2G17690.SNP6 1209 G TGGGAGATAAGGCGATTGTGA TCACAATCGCCTTATCTCCCA
 # AT2G17690 LER AT2G17690.SNP6 1209 C TGGGAGATAACGCGATTGTGA TCACAATCGCGTTATCTCCCA
 
+DATASET1=COL
+DATASET2=LER
+if [ "$1" -eq "3" ]; then
+    DATASET2="TSU"
+fi
+
 PREV="NONE"
 COUNTER=0
 while read line; do
@@ -21,6 +27,6 @@ while read line; do
     COL_REV=`echo ${COL_FWD} | rev | tr 'A' 'a' | tr 'C' 'c' | tr 'G' 'g' | tr 'T' 't' | tr 'a' 'T' | tr 'c' 'G' | tr 'g' 'C' | tr 't' 'A' `
     LER_REV=`echo ${LER_FWD} | rev | tr 'A' 'a' | tr 'C' 'c' | tr 'G' 'g' | tr 'T' 't' | tr 'a' 'T' | tr 'c' 'G' | tr 'g' 'C' | tr 't' 'A' `
 
-    echo ${GENE} COL ${SNP} $1 $2 ${COL_FWD} ${COL_REV}
-    echo ${GENE} LER ${SNP} $4 $3 ${LER_FWD} ${LER_REV}
+    echo ${GENE} ${DATASET1} ${SNP} $1 $2 ${COL_FWD} ${COL_REV}
+    echo ${GENE} ${DATASET2} ${SNP} $4 $3 ${LER_FWD} ${LER_REV}
 done
