@@ -23,19 +23,19 @@ $ ../scripts/make_scripts.sh 4
 ```
 ## Step 3. Use grep to count SNPs.
 On Abel, run the count_SNP.Col_x_Tsu.sh in a directory with these files.
-Col_x_Tsu_BR1_R1.seq
-Col_x_Tsu_BR1_R2.seq
-Col_x_Tsu_BR2_R1.seq
-Col_x_Tsu_BR2_R2.seq
-Col_x_Tsu_BR3_R1.seq
-Col_x_Tsu_BR3_R2.seq
+* Col_x_Tsu_BR1_R1.seq
+* Col_x_Tsu_BR1_R2.seq
+* Col_x_Tsu_BR2_R1.seq
+* Col_x_Tsu_BR2_R2.seq
+* Col_x_Tsu_BR3_R1.seq
+* Col_x_Tsu_BR3_R2.seq
 On Abel, run the count_SNP.Tsu_x_Col.sh in a directory with these files.
-Tsu_x_Col_BR1_R1.seq
-Tsu_x_Col_BR1_R2.seq
-Tsu_x_Col_BR3_R1.seq
-Tsu_x_Col_BR3_R2.seq
-Tsu_x_Col_BR4_R1.seq
-Tsu_x_Col_BR4_R2.seq
+* Tsu_x_Col_BR1_R1.seq
+* Tsu_x_Col_BR1_R2.seq
+* Tsu_x_Col_BR3_R1.seq
+* Tsu_x_Col_BR3_R2.seq
+* Tsu_x_Col_BR4_R1.seq
+* Tsu_x_Col_BR4_R2.seq
 
 On Abel, sequences were extracted from the raw reads files.
 The *.seq files consisted of just nucleotides, untrimmed, 150bp per line.
@@ -58,8 +58,9 @@ $ ../scripts/log_to_csv.sh 4
 ```
 In the output csv files, Col comes before Ler (and Col comes before Tsu).
 The outputs are csv files with lines like this.
-
+```
 AT1G02580.SNP3,0,0,0,94,187,172,115,208,160,0,0,0,0,0,0,86,82,82,75,67,107,0,0,0
+```
 
 ## Step 5. Transform SNP counts to read counts.
 The script was run like this using 3 => Col_x_Tsu and 4 => Tsu_x_Col.
@@ -80,3 +81,24 @@ The outputs look like this.
 ```
 AT1G02580 271 274 261 205 380 229
 ```
+
+## Step 6. Recreate equivalent files from Informative Reads pipeline.
+Now we have the "three_reps_per_gene" files for SNP counts.
+For comparison, we need the "three_reps_per_gene" files for IR counts.
+Unfortunately, those were considered intermediate files and were not saved in the repo.
+We will recreate them from stats files by removing all the stats.
+This script inputs *.three_reps_per_gene.filtered.final.csv from the repo.
+This script outputs IR *.three_reps_per_gene csv files.
+```
+../scripts/get_IR_three_reps_per_gene.sh 3
+../scripts/get_IR_three_reps_per_gene.sh 4
+```
+
+## STEP 7. Generate statistics.
+Run the comparative_12gene_counts.sh script on SNP and IR data.
+This runs on these input files:
+* IR.Col_x_Tsu.three_reps_per_gene
+* IR.Tsu_x_Col.three_reps_per_gene
+* SNP.Col_x_Tsu.three_reps_per_gene
+* SNP.Tsu_x_Col.three_reps_per_gene
+
