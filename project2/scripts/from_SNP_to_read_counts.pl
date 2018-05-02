@@ -5,6 +5,10 @@ use strict;
 # Examples:  Col_x_Ler.csv  or  Ler_x_Col.csv
 # Output count files similar to those for Informative Reads.
 
+# Although this script mentions Col_x_Ler explicitly,
+# Col and Ler are really just place markers.
+# The script should work for Col_x_Tsu any cross at all.
+
 # Mimic Informative Reads files where...
 # ColLerBR1.Columns_Col_Ler files contain one line per gene with gene name, Col count, Ler count.
 #   These files always list Col before Ler.
