@@ -101,4 +101,14 @@ This runs on these input files:
 * IR.Tsu_x_Col.three_reps_per_gene
 * SNP.Col_x_Tsu.three_reps_per_gene
 * SNP.Tsu_x_Col.three_reps_per_gene
+The script generates these intermediate files:
+* IR.Col_x_Tsu.three_reps_per_gene.de.sorted
+* IR.Tsu_x_Col.three_reps_per_gene.de.sorted
+* SNP.Col_x_Tsu.three_reps_per_gene.de.sorted
+* SNP.Tsu_x_Col.three_reps_per_gene.de.sorted
+The script generates these output files:
+* IR.Col_x_Tsu.three_reps_per_gene.final.csv
+* IR.Tsu_x_Col.three_reps_per_gene.final.csv
+* SNP.Col_x_Tsu.three_reps_per_gene.final.csv
+* SNP.Tsu_x_Col.three_reps_per_gene.final.csv
 

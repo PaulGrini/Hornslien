@@ -27,7 +27,7 @@ export MYGENES="AT2G35670|AT4G25530|AT1G02580|AT1G65330|AT3G19350|AT5G26650|AT2G
 
 # Restrict output to the read counts. Chop off the statistics.
 cat ${REPODIR}/project1/results1/Statistics/${DATASET}.three_reps_per_gene.filtered.final.csv \
-    | egrep "${MYGENES}" | cut -d ',' -f 1-7 \
+    | egrep "${MYGENES}" | cut -d ',' -f 1-7 | tr ',' ' ' \
     > IR.${DATASET}.three_reps_per_gene
 
 wc *.three_reps_per_gene

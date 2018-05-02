@@ -19,6 +19,21 @@
 #    gene mat/2 mat/2 mat/2 pat pat pat \
 #    gene_num log_FC avg_log_expr t_statistic P_value adjusted_P LogOddsDiffExpr FoldChange
 
+DATASET="Undefined"
+PARAM="0"
+if [ "$1" -eq "1" ]; then
+    DATASET="Col_x_Ler"
+fi
+if [ "$1" -eq "2" ]; then
+    DATASET="Ler_x_Col"
+fi
+if [ "$1" -eq "3" ]; then
+    DATASET="Col_x_Tsu"
+fi
+if [ "$1" -eq "4" ]; then
+    DATASET="Tsu_x_Col"
+fi
+
 date
 pwd
 
@@ -31,13 +46,12 @@ else
     ls -l ${SCRIPTDIR}/limma.foldchange.r
 fi
 
-Rscript ${SCRIPTDIR}/limma.foldchange.r SNP.Col_x_Ler.three_reps_per_gene
-Rscript ${SCRIPTDIR}/limma.foldchange.r SNP.Ler_x_Col.three_reps_per_gene
+echo "Get foldchange on SNP $DATASET"
+Rscript ${SCRIPTDIR}/limma.foldchange.r SNP.${DATASET}.three_reps_per_gene
+echo "Get foldchange on IR $DATASET"
+Rscript ${SCRIPTDIR}/limma.foldchange.r IR.${DATASET}.three_reps_per_gene
 
-Rscript ${SCRIPTDIR}/limma.foldchange.r IR.Col_x_Ler.three_reps_per_gene
-Rscript ${SCRIPTDIR}/limma.foldchange.r IR.Ler_x_Col.three_reps_per_gene
-
-for X in $(ls *.three_reps_per_gene)
+for X in $(ls *.${DATASET}.three_reps_per_gene)
 do
     cat ${X} | tr ' ' ',' > tmp.${X}.csv
     cat ${X}.de | tr -d '"' | sort -t"," -k1,1n | awk '{if (C++ >= 1) print $0;}' > ${X}.de.sorted
