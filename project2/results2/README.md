@@ -23,13 +23,16 @@ $ ../scripts/make_scripts.sh 4
 ```
 ## Step 3. Use grep to count SNPs.
 On Abel, run the count_SNP.Col_x_Tsu.sh in a directory with these files.
+
 * Col_x_Tsu_BR1_R1.seq
 * Col_x_Tsu_BR1_R2.seq
 * Col_x_Tsu_BR2_R1.seq
 * Col_x_Tsu_BR2_R2.seq
 * Col_x_Tsu_BR3_R1.seq
 * Col_x_Tsu_BR3_R2.seq
+
 On Abel, run the count_SNP.Tsu_x_Col.sh in a directory with these files.
+
 * Tsu_x_Col_BR1_R1.seq
 * Tsu_x_Col_BR1_R2.seq
 * Tsu_x_Col_BR3_R1.seq
@@ -96,17 +99,23 @@ This script outputs IR *.three_reps_per_gene csv files.
 
 ## STEP 7. Generate statistics.
 Run the comparative_12gene_counts.sh script on SNP and IR data.
-This runs on these input files:
+
+The script runs on these input files:
+
 * IR.Col_x_Tsu.three_reps_per_gene
 * IR.Tsu_x_Col.three_reps_per_gene
 * SNP.Col_x_Tsu.three_reps_per_gene
 * SNP.Tsu_x_Col.three_reps_per_gene
+
 The script generates these intermediate files:
+
 * IR.Col_x_Tsu.three_reps_per_gene.de.sorted
 * IR.Tsu_x_Col.three_reps_per_gene.de.sorted
 * SNP.Col_x_Tsu.three_reps_per_gene.de.sorted
 * SNP.Tsu_x_Col.three_reps_per_gene.de.sorted
+
 The script generates these output files:
+
 * IR.Col_x_Tsu.three_reps_per_gene.final.csv
 * IR.Tsu_x_Col.three_reps_per_gene.final.csv
 * SNP.Col_x_Tsu.three_reps_per_gene.final.csv
