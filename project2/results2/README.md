@@ -15,11 +15,12 @@ $ show-snps -H -C -T -x 10 Col_Tsu.delta | ../scripts/parse_SNPs.sh 3 > parsed_S
 
 Step 2. Make the script to grep for SNPs.
 This runs script_SNP.sh and writes count_SNP.Col_Tsu.sh.
+The numbers indicate Col_Ler, Ler_Col, Col_Tsu, Tsu_Col respectively.
 
-$ ../scripts/make_scripts.sh 1   # Col_Ler
-$ ../scripts/make_scripts.sh 2   # Ler_Col
-$ ../scripts/make_scripts.sh 3   # Col_Tsu
-$ ../scripts/make_scripts.sh 4   # Tsu_Col
+$ ../scripts/make_scripts.sh 1   
+$ ../scripts/make_scripts.sh 2   
+$ ../scripts/make_scripts.sh 3   
+$ ../scripts/make_scripts.sh 4   
 
 Step 3. Use grep to count SNPs.
 On Abel, run the count_SNP.Col_x_Tsu.sh in a directory with these files.
@@ -36,4 +37,10 @@ Tsu_x_Col_BR3_R1.seq
 Tsu_x_Col_BR3_R2.seq
 Tsu_x_Col_BR4_R1.seq
 Tsu_x_Col_BR4_R2.seq
+
+On Abel, sequences were extracted from the raw reads files.
+The *.seq files consisted of just nucleotides, untrimmed, 150bp per line.
+The script count_SNP.Col_x_Tsu.sh (and count_SNP.Tsu_x_Col.sh) were run on Abel.
+The files count_SNP.Col_x_Tsu.log (and count_SNP.Tsu_x_Col.log) were downloaded.
+
 
