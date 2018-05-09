@@ -59,7 +59,7 @@ The script parameters 3 and 4 indicate Col_Tsu and Tsu_Col respectively.
 $ ../scripts/log_to_csv.sh 3
 $ ../scripts/log_to_csv.sh 4
 ```
-In the output csv files, Col comes before Ler (and Col comes before Tsu).
+In the output csv files, Col comes before Ler and Col comes before Tsu.
 The outputs are csv files with lines like this.
 ```
 AT1G02580.SNP3,0,0,0,94,187,172,115,208,160,0,0,0,0,0,0,86,82,82,75,67,107,0,0,0
@@ -73,7 +73,7 @@ $ from_SNP_to_read_counts.sh 4
 ```
 The from_SNP_to_read_counts.sh script invokes the from_SNP_to_read_counts.pl script. 
 This script converted the csv files to the three_reps_per_gene format used for Informative Reads. 
-The results are in the SNP.Col_x_Ler.three_reps_per_gene (and SNP.Ler_x_Col) files. 
+The results are in the SNP.Col_x_Tsu.three_reps_per_gene (and SNP.Tsu_x_Col) files. 
 In these files, maternal values have been cut in half. 
 In these files, maternal comes before paternal. 
 These outputs are designed for comparison to outputs of collate_three_reps_per_gene.sh for IR. 

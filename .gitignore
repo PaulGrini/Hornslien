@@ -1,3 +1,5 @@
 *.sh~
 *.md~
 *.pl~
+.gitignore~
+.DS_Store

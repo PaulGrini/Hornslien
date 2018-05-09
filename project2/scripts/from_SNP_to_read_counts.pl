@@ -22,8 +22,8 @@ use strict;
 #   For Ler_x_Col the script used reversal=2 i.e.  swap columns to output: gene Ler Ler Ler Col Col Col
 
 # PARAMETERS
-die ("Usage: $0 <Col|Ler> <filename> ") unless (scalar(@ARGV)==2);
-die ("Usage: $0 <Col|Ler> <filename> ") unless ($ARGV[0] eq "Col" || $ARGV[0] eq "Ler");
+die ("Usage: $0 <Col|Ler|Tsu> <filename> ") unless (scalar(@ARGV)==2);
+die ("Usage: $0 <Col|Ler|Tsu> <filename> ") unless ($ARGV[0] eq "Col" || $ARGV[0] eq "Ler" || $ARGV[0] eq "Tsu" );
 my ($MATERNAL) = $ARGV[0];
 my ($DATA_FILE) = $ARGV[1];
 print STDERR "Maternal = $MATERNAL\n";
@@ -31,6 +31,7 @@ print STDERR "Input File = $DATA_FILE\n";
 
 # CONSTANTS
 my ($INFINITY)=1000000;
+my ($BIOLOGICAL_REPLICATES)=3;   # code needs to change if this value changes
 
 # GLOBALS
 my (%ALL_DATA); # hash ( gene, array_of_lines )
@@ -79,10 +80,10 @@ sub all_genes () {
 	print STDERR " Gene $gene was represented by this SNP count line: $line\n";
 	print STDERR " Compute Mat BR1 from ($FIELDS[$m1] + $FIELDS[$m2]) / 2 \n";
 	print STDERR " Compute Pat BR1 from ($FIELDS[$p1] + $FIELDS[$p2]) \n";
-	for ($i=1; $i<=3; $i++) {
-	    $MatBR[$i] = $FIELDS[$m1++] + $FIELDS[$m2++];
+	for ($i=1; $i<=$BIOLOGICAL_REPLICATES; $i++) {
+	    $MatBR[$i] = $FIELDS[$m1++] + $FIELDS[$m2++];  # sum of R1rev + R2fwd
 	    $MatBR[$i] = int (0.5+$MatBR[$i]/2.0); # cut maternal in half, then round to integer
-	    $PatBR[$i] = $FIELDS[$p1++] + $FIELDS[$p2++];      
+	    $PatBR[$i] = $FIELDS[$p1++] + $FIELDS[$p2++];  # sum of R1rev + R2fwd 
 	}
 	print STDERR "Output $gene $MatBR[1] $MatBR[2] $MatBR[3] $PatBR[1] $PatBR[2] $PatBR[3]\n";
 	print STDOUT "$gene $MatBR[1] $MatBR[2] $MatBR[3] $PatBR[1] $PatBR[2] $PatBR[3]\n";

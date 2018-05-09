@@ -19,31 +19,39 @@
 #    gene mat/2 mat/2 mat/2 pat pat pat \
 #    gene_num log_FC avg_log_expr t_statistic P_value adjusted_P LogOddsDiffExpr FoldChange
 
+if [[ $# -eq 0 ]] ; then
+    echo "ERROR! First argument is required"
+    exit 1
+fi
 DATASET="Undefined"
 PARAM="0"
 if [ "$1" -eq "1" ]; then
     DATASET="Col_x_Ler"
-fi
-if [ "$1" -eq "2" ]; then
+elif [ "$1" -eq "2" ]; then
     DATASET="Ler_x_Col"
-fi
-if [ "$1" -eq "3" ]; then
+elif [ "$1" -eq "3" ]; then
     DATASET="Col_x_Tsu"
-fi
-if [ "$1" -eq "4" ]; then
+elif [ "$1" -eq "4" ]; then
     DATASET="Tsu_x_Col"
+else
+    echo "ERROR! First arument must be in {1,2,3,4}"
+    exit 2
 fi
 
 date
 pwd
 
 if [[ -z "${SCRIPTDIR}" ]]; then
-    echo "Please set the SCRIPTDIR environment variable to the home of limma.foldchange.r"
-    exit 1
+    echo "ERROR! Please set the SCRIPTDIR environment variable to the home of limma.foldchange.r"
+    exit 3
 else
     export SCRIPTDIR="${SCRIPTDIR}"
     echo SCRIPTDIR ${SCRIPTDIR}
     ls -l ${SCRIPTDIR}/limma.foldchange.r
+    if [[ ! -f ${SCRIPTDIR}/limma.foldchange.r ]] ; then
+	echo "ERROR! R scrdipt not found in SCRIPTDIR"
+	exit 4
+    fi
 fi
 
 echo "Get foldchange on SNP $DATASET"
