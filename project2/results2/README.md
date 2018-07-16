@@ -33,7 +33,7 @@ $ ../scripts/make_scripts.sh 2
 $ ../scripts/make_scripts.sh 3   
 $ ../scripts/make_scripts.sh 4   
 ```
-## Step 3. Use grep to count SNPs.
+## Step 3. Use grep to count reads matching SNPs.
 The scripts generated above were run on Abel (because large input files are required).
 The scripts take '*.seq' files as input.
 These input files consist of bare read sequences.
@@ -89,9 +89,11 @@ Each output line looks like this.
 AT1G02580.SNP3,0,0,0,94,187,172,115,208,160,0,0,0,0,0,0,86,82,82,75,67,107,0,0,0
 ```
 
-## Step 5. Transform SNP counts to read counts.
+## Step 5. Collapse SNP counts into one per set of counts per gene.
 Input read counts per SNP and output read counts per gene.
-The algorithm is to select one SNP that best represents each gene.
+The algorithm selects one SNP that best represents each gene.
+The algorithm is not perfect; it selects the SNP having the highest count in any category 
+e.g. the SNP whose Col-fwd-R1-rep2 count exceeds that of any count for any SNP for this gene. 
 Then, transform the 24 counts at one SNP into six counts for one gene.
 Output 6 numbers per gene: number of reads assigned to the materinal or paternal genotype in each of 3 replicates.
 
@@ -104,7 +106,7 @@ The from_SNP_to_read_counts.sh script invokes the from_SNP_to_read_counts.pl scr
 The script converted the csv files to the three_reps_per_gene format used for Informative Reads. 
 The results are in files named SNP.*.three_reps_per_gene (where * is Col_x_Tsu or Tsu_x_Col). 
 These outputs are designed for comparison to outputs of collate_three_reps_per_gene.sh for IR. 
-The from_SNP_to_read_counts.log file has the log for how each gene was analyzed.
+The from_SNP_to_read_counts.log file has the breakdown of read counts.
 
 The output in SNP.Col_x_Tsu.three_reps_per_gene looks like this.
 In these files, maternal values have been cut in half. 

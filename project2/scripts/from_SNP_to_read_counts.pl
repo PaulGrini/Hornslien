@@ -91,7 +91,7 @@ sub all_genes () {
 }
 
 # For one gene, parse every line, and retain the one line with largest numbers.
-# Define largest line as line whose max value is the max value over all genes.
+# Define largest line as line whose max count is largest over all SNP counts for that gene.
 # Example returned strings:
 # AT1G55560.SNP1395,20,10,14,354,154,204,368,129,256,10,10,14,33,17,60,403,340,545,417,495,485,47,19,58
 # AT1G65300.SNP2053,7,0,16,3021,2569,2776,2980,2704,2696,7,0,16,2,1,0,1299,1213,1289,1297,1193,1454,2,0,0
