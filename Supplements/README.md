@@ -1,8 +1,8 @@
 <b>Supplementary Data</b>
 
-SData 1.xlsx<br>
-SData 2.xlsx<br>
-SData 3.xlsx<br>
+SData 1.xlsx<br> List of targets for the RNA sequence capture imprinting study
+SData 2.xlsx<br> Read count from sequencing and map rates of all reads and informative reads
+SData 3.xlsx<br> 
 SData 4.xlsx<br>
 SData 5.xlsx<br>
 SData 6.xlsx<br>
