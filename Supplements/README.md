@@ -11,11 +11,6 @@ SData 8.xlsx  Differential expression analysis between ecotypes used in this stu
 SData 9.xlsx  Differential expression analysis for all mutant crosses calling parental preferential bias <br>
 SData 10.xlsx  Prediction interval analysis of parentally biased genes in mutant crosses <br>
 
-<b>Read Counts</b>
-
-<b>Thresholds </b>
-
-
 
 <b>Guide to Additional Data and Program Files on Github</b><br>
 (Directories: project1; core; ERCC_Normalize)<br>
