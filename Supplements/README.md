@@ -1,6 +1,6 @@
 <b>Supplementary Data</b>
 
-Supplementary Tables 1-10
+S1-S10_All Suppl tables.xlsx  Supplementary Tables 1-10 <br> 
 
 SData 1.xlsx  List of targets for the RNA sequence capture imprinting study <br> 
 SData 2.xlsx  Read count from sequencing and map rates of all reads and informative reads <br> 
